@@ -3,6 +3,7 @@ var cmdArgumentParser = {};
 cmdArgumentParser.parseArguments = () => {
   var secretsFilePath = "";
   var constants = require("./constants");
+
   process.argv.slice(2).forEach((val, index) => {
     var argument = val.split("=");
     if (argument[0] === constants.EnvironmentArgument) {
@@ -17,10 +18,10 @@ parseEnvironment = (argument) => {
   switch (argument) {
 
     case constants.DevEnvironment:
-      return "./secrets.dev.txt";
+      return "./secrets.dev.json";
 
     case constants.LocalEnvironment:
-      return "./secrets.txt";
+      return "./secrets.json";
   }
 };
 

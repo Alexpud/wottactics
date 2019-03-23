@@ -1,14 +1,15 @@
 var redis = require('redis');
 const fs = require('fs');
 var secrets = JSON.parse(fs.readFileSync('secrets.txt', 'utf8'));
+
 module.exports = {
-  buildClient: (errorCallBackFunction) => {
+  buildClient: (redisOptions) => {
     var secrets = JSON.parse(fs.readFileSync('secrets.txt', 'utf8'));
-    var redisClient = redis.createClient(secrets.redis_options);
+    var redisClient = redis.createClient(redisOptions);
     return redisClient;
   },
-  authenticateRedis: (redisClient, errorFunction) => {
-    redisClient.auth(secrets.redis_options.pass, (e) => {
+  authenticateRedis: (redisClient, redisOptions) => {
+    redisClient.auth(redisOptions.pass, (e) => {
       if (e) {
         console.error(e);
         return;

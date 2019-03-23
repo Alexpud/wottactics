@@ -1,6 +1,9 @@
+const commandParser = require("./utils/CMDArgumentParser");
+var secretsFilePath = commandParser.parseArguments().secretsPath;
+
 var fs = require('fs');
 var _datadir = null;
-var secrets = JSON.parse(fs.readFileSync('secrets.txt', 'utf8'));
+var secrets = JSON.parse(fs.readFileSync(secretsFilePath, 'utf8'));
 var http = require('http');
 var escaper = require('mongo-key-escape');
 var sizeof = require('object-sizeof');
@@ -8,8 +11,8 @@ var request = require('request');
 var constants = require('./utils/constants');
 var redis = require("./redis");
 
-var redisClient = redis.buildClient((e) => { throw e; });
-redis.authenticateRedis(redisClient, (e) => { throw e; });
+var redisClient = redis.buildClient(secrets.redis_options);
+redis.authenticateRedis(redisClient, secrets.redis_options);
 
 var cookieParser = require('cookie-parser')
 var Session = require('express-session');

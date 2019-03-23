@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./app"
+    "start": "node ./app --env=local"
   },
   "dependencies": {
     "binarysearch": "^1.0.0",

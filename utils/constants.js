@@ -1,5 +1,8 @@
 
 module.exports = {
+  EnvironmentArgument: "--env",
+  LocalEnvironment: "local",
+  DevEnvironment: "dev",
   ValidChars:  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
   ListOfGames: [
     {abbreviation: 'wot', 						name: "World Of Tanks" }, 

@@ -1,6 +1,12 @@
 # My part
 
-Hi, if for some reason you want to run the app and the whole environment as docker containers, use the docker-compose file available in the directory. Rename the file *secret.dockercompose.yml* to *secrets.json*, that file is already uses the configuration necessary to have the whole application working on a network.
+Hi, if for some reason you want to run the app and the whole environment as docker containers, use the docker-compose file available in the directory. Then follow these steps:
+
+1 - Build the docker image of the application with the command *docker build .*
+
+2 - Rename the file *secret.dockercompose.yml* to *secrets.json*, that file is already uses the configuration necessary to have the whole application working on a network.
+
+3 - Run the command docker-compose up
 
 But, you will still need to setup the DB as instructed in the original repository for mongodb.
 
